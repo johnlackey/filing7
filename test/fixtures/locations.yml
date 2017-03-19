@@ -4,12 +4,14 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
+location_one:
+    LocName:       LocationOne
     AllowDecimals: false
     MaxCapacity:   10
     Viewable:      true
 #
-two:
+location_two:
+    LocName:       LocationTwo
     AllowDecimals: false
     MaxCapacity:   10
     Viewable:      true

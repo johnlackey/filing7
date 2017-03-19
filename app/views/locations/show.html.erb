@@ -1,4 +1,33 @@
+<nav>
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <%= link_to @location.LocName, location_path(@location), {:class=>"breadcrumb"} %>
+    </div>
+  </div>
+</nav>
 <p id="notice"><%= notice %></p>
+<div class="row xs12">
+  <h2 class="col xs1 ">Location:</h2>
+  <h2 class="col xs11"><%= @location.LocName %></h2>
+</div>
+<div class="row xs12">
+  <h3 class="col s1 ">Note:</h3>
+  <h3 class="col s11 "><%= @location.LocNote %></h3>
+</div>
+<div class="row xs12">
+  <h3 class="col xs1 ">AllowDecimals:</h3>
+  <h3 class="col xs11"> <%= @location.AllowDecimals %></h3>
+</div>
+<div class="row xs12">
+  <h3 class="col xs1 ">Capacity:</h3>
+  <h3 class="col xs11"> <%= @location.MaxCapacity %></h3>
+</div>
+<div class="row xs12">
+  <h3 class="col xs1 ">Viewable:</h3>
+  <h3 class="col xs11"> <%= @location.Viewable %></h3>
+</div>
+<ul class="collapsible popout" data-collapsible="accordion">
+</ul>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>
