@@ -15,3 +15,9 @@ location_two:
     AllowDecimals: false
     MaxCapacity:   10
     Viewable:      true
+
+location_three:
+  LocName:        LocationThree
+  AllowDecimals:  false
+  MaxCapacity:    10
+  Viewable:       true

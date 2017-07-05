@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.includes(:location).all
   end
 
   # GET /items/1
@@ -26,8 +26,8 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if item_params[:LocId] != nil
-      items = Item.find_by(LocId: item_params[:LocId])
-      @item.NumItemId = items == nil ? 1 : items.maximum(:NumItemId) + 1
+      items = Item.where(LocId: item_params[:LocId])
+      @item.NumItemId = (items == nil || items.maximum(:NumItemId) == nil) ? 1 : (items.maximum(:NumItemId) + 1)
       @item.TextItemId = @item.NumItemId.to_s
       location = @item.location
       @item.ReviewFreq = 0 if @item.ReviewFreq == nil

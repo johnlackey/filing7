@@ -2,14 +2,14 @@
 
 <h1>Listing Locations</h1>
 
-<table>
+<table class="striped">
   <thead>
     <tr>
-      <th>Location</th>
-      <th>Note</th>
-      <th>Allow Decimals</th>
-      <th>Max Count</th>
-      <th>Viewable</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Capacity</th>
+      <th>Items</th>
+      <th>Review Frequency</th>
     </tr>
   </thead>
 
@@ -18,9 +18,9 @@
       <tr>
         <td><%= link_to location.LocName, location_path(location) %></td>
         <td><%= location.LocNote %></td>
-        <td><%= location.AllowDecimals %></td>
         <td><%= location.MaxCapacity %></td>
-        <td><%= location.Viewable %></td>
+        <td><%= location.items.count %></td>
+        <td><%= location.ReviewFreqString %></td>
       </tr>
     <% end %>
   </tbody>

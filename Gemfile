@@ -46,6 +46,7 @@ gem 'hirb'
 gem 'github-markup'
 gem 'jquery-turbolinks'
 gem 'mysql2'
+gem 'paranoia'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

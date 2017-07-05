@@ -2,11 +2,14 @@ require 'test_helper'
 
 class ItemsControllerTest < ActionController::TestCase
   setup do
-    @item = items(:item_one)
     @location = locations(:location_one)
+    @item = items(:item_one)
+    #@item.location = @location
+    #@item.save
   end
 
   test "should get index" do
+    assert_not_equal(@item.LocId, 0)
     get :index
     assert_response :success
     assert_not_nil assigns(:items)

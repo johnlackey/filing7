@@ -11,5 +11,10 @@ RSpec.describe "locations/index", type: :view do
 
   it "renders a list of locations" do
     render
+    expect(rendered).to match /Name/
+    expect(rendered).to match /Description/
+    expect(rendered).to match /Capacity/
+    expect(rendered).to match /Items/
+    expect(rendered).to match /Review Frequency/
   end
 end

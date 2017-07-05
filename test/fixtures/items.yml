@@ -7,7 +7,7 @@
 item_one:
     NumItemId:  1
     TextItemId: 1
-    LocId:      location_one
+    location:   location_one
     ItemName:   ItemOne
     Keywords:   false
     ReviewFreq: 0
@@ -18,7 +18,7 @@ item_one:
 item_two:
     NumItemId:  2
     TextItemId: 2
-    LocId:      location_two
+    location:  location_two
     ItemName:   ItemTwo
     Keywords:   false
     ReviewFreq: 0

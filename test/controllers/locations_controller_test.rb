@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LocationsControllerTest < ActionController::TestCase
   setup do
-    @location = locations(:location_one)
+    @location = locations(:location_three)
   end
 
   test "should get index" do
@@ -18,7 +18,7 @@ class LocationsControllerTest < ActionController::TestCase
 
   test "should create location" do
     assert_difference('Location.count') do
-      post :create, params: { location: { } }
+      post :create, params: { location: { LocName: 'CreateLocation' } }
     end
 
     assert_redirected_to location_path(assigns(:location))
@@ -35,7 +35,7 @@ class LocationsControllerTest < ActionController::TestCase
   end
 
   test "should update location" do
-    patch :update, params: { id: @location, location: {  } }
+    patch :update, params: { id: @location, location: { LocName: 'UpdateLocation'  } }
     assert_redirected_to location_path(assigns(:location))
   end
 
