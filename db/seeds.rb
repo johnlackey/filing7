@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Status.create(id: 0, name: 'Open')
+Status.create(id: 1, name: 'Occupied')
+Status.create(id: 2, name: 'Move Out Pending')
+Status.create(id: 3, name: 'Move In Pending')

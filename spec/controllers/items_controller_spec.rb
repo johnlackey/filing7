@@ -1,63 +1,60 @@
-require 'test_helper'
+require 'rails_helper'
 
-class ItemsControllerTest < ActionController::TestCase
+RSpec.describe ItemsController, type: :controller do
   fixtures :all
 
-  setup do
+  before do
     @location = locations(:location_one)
     @item = items(:item_one)
-    #@item.location = @location
-    #@item.save
   end
-
-  test "should get index" do
-    assert_not_equal(@item.LocId, 0)
+  it "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:items)
+    expect(assigns(:items)).to_not be_nil
   end
 
-  test "should get new" do
+  it "should get new" do
     get :new
     assert_response :success
   end
 
-  test "should fail to create item" do
-    assert_no_difference('Item.count') do
+  it "should fail to create item" do
+    expect {
       post :create, params: { item: { ItemName: '(open)'} }
-    end
+    }.to_not change{Item.count}
 
     assert_response :success
   end
 
-  test "should create item" do
-    assert_difference('Item.count') do
+  it "should create item" do
+    expect {
       post :create, params: { item: { LocId: @location } }
-    end
+    }.to change{Item.count}
 
     assert_redirected_to item_path(assigns(:item))
   end
 
-  test "should show item" do
+  it "should show item" do
     get :show, params: { id: @item }
     assert_response :success
   end
 
-  test "should get edit" do
+  it "should get edit" do
     get :edit, params: { id: @item }
     assert_response :success
   end
 
-  test "should update item" do
+  it "should update item" do
     patch :update, params: { id: @item, item: { ItemName: 'changed name'  } }
     assert_redirected_to item_path(assigns(:item))
   end
 
-  test "should destroy item" do
-    assert_difference('Item.count', -1) do
+  it "should destroy item" do
+    expect{
       delete :destroy, params: { id: @item }
-    end
+    }.to change{Item.count}.by(-1)
 
     assert_redirected_to items_path
   end
+
 end

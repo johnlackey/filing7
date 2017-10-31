@@ -18,8 +18,8 @@
     <% @items.each do |item| %>
       <tr>
         <td>
-          <% if item.getLocation!=nil %>
-              <%= item.getLocation.LocName %>
+          <% if item.location!=nil %>
+              <%= item.location.LocName %>
           <% else %>
               <%= item.LocId %>
           <% end %>
