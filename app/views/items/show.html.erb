@@ -1,0 +1,33 @@
+<nav>
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <%= link_to @item.ItemName, item_path(@item), {:class=>"breadcrumb"} %>
+    </div>
+  </div>
+</nav>
+<p id="notice"><%= notice %></p>
+<div class="row xs12">
+  <h2 class="col xs1 ">Item:</h2>
+  <h2 class="col xs11"><%= @item.ItemName %></h2>
+</div>
+<div class="row xs12">
+  <h3 class="col s1 ">Keywords:</h3>
+  <h3 class="col s11 "><%= @item.Keywords %></h3>
+</div>
+<div class="row xs12">
+  <h3 class="col xs1 ">ActionDate:</h3>
+  <h3 class="col xs11"> <%= @item.ActionDate %></h3>
+</div>
+<div class="row xs12">
+  <h3 class="col xs1 ">ItemNote:</h3>
+  <h3 class="col xs11"> <%= @item.ItemNote %></h3>
+</div>
+<div class="row xs12">
+  <h3 class="col xs1 ">Status:</h3>
+  <h3 class="col xs11"> <%= @item.Status %></h3>
+</div>
+<ul class="collapsible popout" data-collapsible="accordion">
+</ul>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
