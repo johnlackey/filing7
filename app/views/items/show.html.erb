@@ -1,6 +1,7 @@
 <nav>
   <div class="nav-wrapper">
     <div class="col s12">
+      <%= link_to @item.location.LocName + ': ' + @item.TextItemId, location_path(@item.LocId), {:class=>"breadcrumb"} %>
       <%= link_to @item.ItemName, item_path(@item), {:class=>"breadcrumb"} %>
     </div>
   </div>

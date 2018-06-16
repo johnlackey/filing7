@@ -1,6 +1,7 @@
 <nav>
   <div class="nav-wrapper">
     <div class="col s12">
+      <%= link_to 'Locations', locations_path, {:class=>"breadcrumb"} %>
       <%= link_to @location.LocName, location_path(@location), {:class=>"breadcrumb"} %>
     </div>
   </div>
@@ -15,8 +16,8 @@
     <th>Item</th>
     <th>Item Name</th>
     <th>Keywords</th>
-    <th>Categorys</th>
-    <th>Action Date</th>
+    <th>Category</th>
+    <th>Action_Date</th>
     <th>Status</th>
   </tr>
   </thead>

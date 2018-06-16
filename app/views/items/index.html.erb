@@ -8,7 +8,7 @@
       <th>Location</th>
       <th>Item</th>
       <th>Keywords</th>
-      <th>Action Date</th>
+      <th>Action_Date</th>
       <th>Note</th>
       <th>Status</th>
     </tr>
@@ -27,9 +27,17 @@
         </td>
         <td><%= link_to item.ItemName, item_path(item) %></td>
         <td><%= item.Keywords %></td>
-        <td><%= item.ActionDate %></td>
+        <td>
+          <% if item.ActionDate %>
+            <%= item.ActionDate.strftime('%Y-%m-%d') %>
+          <% end %>
+        </td>
         <td><%= item.ItemNote %></td>
-        <td><%= item.Status %></td>
+        <td>
+          <% if item.status %>
+            <%= item.status.name %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -48,7 +48,7 @@ RSpec.describe "locations/show", type: :view do
     expect(rendered).to match /Item Name/
     expect(rendered).to match /Keywords/
     expect(rendered).to match /Category/
-    expect(rendered).to match /Action Date/
+    expect(rendered).to match /Action_Date/
     expect(rendered).to match /Status/
     expect(rendered).to match /1/
     expect(rendered).to match /item1/

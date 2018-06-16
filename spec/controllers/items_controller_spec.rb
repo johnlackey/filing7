@@ -47,6 +47,8 @@ RSpec.describe ItemsController, type: :controller do
   it "should update item" do
     patch :update, params: { id: @item, item: { ItemName: 'changed name'  } }
     assert_redirected_to item_path(assigns(:item))
+    @item.reload
+    expect(@item[:Status]).to eq(1)
   end
 
   it "should destroy item" do

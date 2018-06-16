@@ -13,7 +13,7 @@ item_one:
     ReviewFreq: 0
     ItemNote:   10
     IsTagged:   0
-    Status:     true
+    Status:     1
 #
 item_two:
     NumItemId:  2
@@ -24,4 +24,4 @@ item_two:
     ReviewFreq: 0
     ItemNote:   10
     IsTagged:   0
-    Status:     true
+    Status:     1
