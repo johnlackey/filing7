@@ -1,10 +1,15 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /items
   # GET /items.json
   def index
-    @items = Item.includes(:location).all
+    if params[:itemSearch]
+      @items = Item.includes(:location).order("#{sort_column} #{sort_direction}").where('ItemName LIKE ?', "%#{params[:itemSearch]}%")
+    else
+      @items = Item.includes(:location).order("#{sort_column} #{sort_direction}").all
+    end
   end
 
   # GET /items/1
@@ -78,6 +83,19 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.fetch(:item, {})
-      params.require(:item).permit(:LocId)
+      params.require(:item).permit(:LocId, :itemSearch)
     end
+
+    def sortable_columns
+      ["NumItemId", "ItemName", 'Keywords']
+    end
+
+    def sort_column
+      sortable_columns.include?(params[:column]) ? params[:column] : "NumItemId"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
 end

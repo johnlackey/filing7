@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Items</h1>
-
+<h1>Items</h1>
+<%= form_tag(items_path, method: :get) do %>
+  <%= text_field_tag :itemSearch, params[:itemSearch] %>
+  <%= submit_tag 'Search' %>
+<% end %>
 <table class="striped">
   <thead>
     <tr>
       <th>Location</th>
-      <th>Item</th>
-      <th>Keywords</th>
-      <th>Action_Date</th>
+      <th><%= sort_link "ItemName", 'Item', params[:itemSearch] %></th>
+      <th><%= sort_link "Keywords", nil, params[:itemSearch] %></th>
+      <th><%= sort_link "ActionDate", "Action_Date", params[:itemSearch] %></th>
       <th>Note</th>
       <th>Status</th>
     </tr>

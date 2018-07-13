@@ -1,12 +1,12 @@
-class Item < ActiveRecord::Base
+class Item < ApplicationRecord
   self.primary_key = 'RecordId'
   belongs_to :location, class_name: 'Location',
              foreign_key: 'LocId',
-             primary_key: 'LocId',
+             primary_key: LocId,
              inverse_of:  :items
   belongs_to :category, class_name: 'Category',
              foreign_key: 'CatId',
-             primary_key: 'CatId',
+             primary_key: CatId,
              inverse_of:  :items
   belongs_to :status, class_name: 'Status',
              foreign_key: 'Status',

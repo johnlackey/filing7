@@ -7,9 +7,17 @@
   </div>
 </nav>
 <p id="notice"><%= notice %></p>
-<div class="row xs12">
-  <h2 class="col xs11"><%= @location.LocName %></h2>
-</div>
+<%= form_tag(items_path, method: :get) do %>
+  <div class="row xs12 s12">
+    <h2 class="col xs6 s6"><%= @location.LocName %></h2>
+    <div class="input-field col offset-xs6 xs4 s4">
+      <%= text_field_tag :itemSearch, params[:itemSearch] %>
+    </div>
+    <div class="col xs2 s2">
+      <%= submit_tag 'Search' %>
+    </div>
+  </div>
+<% end %>
 <table class="striped">
   <thead>
   <tr>
@@ -24,27 +32,27 @@
 
   <tbody>
   <% @location.items.each do |item| %>
-      <tr>
-        <td><%= item.NumItemId %></td>
-        <td><%= link_to item.ItemName, item_path(item) %></td>
-        <td><%= item.Keywords %></td>
-        <!--<td><%= item.ItemNote %></td>-->
-        <td>
-          <% if item.category %>
-              <%= item.category.CatName %>
-          <% end %>
-        </td>
-        <td>
-          <% if item.ActionDate %>
-            <%= item.ActionDate.strftime('%Y-%m-%d') %>
-          <% end %>
-        </td>
-        <td>
-          <% if item.status %>
-            <%= item.status.name %>
-          <% end %>
-        </td>
-      </tr>
+    <tr>
+      <td><%= item.NumItemId %></td>
+      <td><%= link_to item.ItemName, item_path(item) %></td>
+      <td><%= item.Keywords %></td>
+      <!--<td><%= item.ItemNote %></td>-->
+      <td>
+        <% if item.category %>
+          <%= item.category.CatName %>
+        <% end %>
+      </td>
+      <td>
+        <% if item.ActionDate %>
+          <%= item.ActionDate.strftime('%Y-%m-%d') %>
+        <% end %>
+      </td>
+      <td>
+        <% if item.status %>
+          <%= item.status.name %>
+        <% end %>
+      </td>
+    </tr>
   <% end %>
   </tbody>
 </table>
