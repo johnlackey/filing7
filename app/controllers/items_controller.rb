@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: %i[show edit update destroy]
   helper_method :sort_column, :sort_direction
 
   # GET /items
@@ -14,8 +16,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1
   # GET /items/1.json
-  def show
-  end
+  def show; end
 
   # GET /items/new
   def new
@@ -23,24 +24,23 @@ class ItemsController < ApplicationController
   end
 
   # GET /items/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /items
   # POST /items.json
   def create
     @item = Item.new(item_params)
-    if item_params[:LocId] != nil
+    unless item_params[:LocId].nil?
       items = Item.where(LocId: item_params[:LocId])
-      @item.NumItemId = (items == nil || items.maximum(:NumItemId) == nil) ? 1 : (items.maximum(:NumItemId) + 1)
+      @item.NumItemId = items.nil? || items.maximum(:NumItemId).nil? ? 1 : (items.maximum(:NumItemId) + 1)
       @item.TextItemId = @item.NumItemId.to_s
       location = @item.location
-      @item.ReviewFreq = 0 if @item.ReviewFreq == nil
-      @item.IsTagged = 0 if @item.IsTagged == nil
-      @item.Status = 0 if @item.Status == nil
+      @item.ReviewFreq = 0 if @item.ReviewFreq.nil?
+      @item.IsTagged = 0 if @item.IsTagged.nil?
+      @item.Status = 0 if @item.Status.nil?
     end
     respond_to do |format|
-      if @item.NumItemId != nil && @item.save
+      if !@item.NumItemId.nil? && @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, item: @item }
       else
@@ -75,27 +75,27 @@ class ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = Item.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def item_params
-      params.fetch(:item, {})
-      params.require(:item).permit(:LocId, :itemSearch)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
-    def sortable_columns
-      ["NumItemId", "ItemName", 'Keywords']
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def item_params
+    params.fetch(:item, {})
+    params.require(:item).permit(:LocId, :itemSearch)
+  end
 
-    def sort_column
-      sortable_columns.include?(params[:column]) ? params[:column] : "NumItemId"
-    end
+  def sortable_columns
+    %w[NumItemId ItemName Keywords]
+  end
 
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
+  def sort_column
+    sortable_columns.include?(params[:column]) ? params[:column] : 'NumItemId'
+  end
 
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
 end

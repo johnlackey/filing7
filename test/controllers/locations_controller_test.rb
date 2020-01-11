@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class LocationsControllerTest < ActionController::TestCase
@@ -5,18 +7,18 @@ class LocationsControllerTest < ActionController::TestCase
     @location = locations(:location_three)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:locations)
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should create location" do
+  test 'should create location' do
     assert_difference('Location.count') do
       post :create, params: { location: { LocName: 'CreateLocation' } }
     end
@@ -24,22 +26,22 @@ class LocationsControllerTest < ActionController::TestCase
     assert_redirected_to location_path(assigns(:location))
   end
 
-  test "should show location" do
+  test 'should show location' do
     get :show, params: { id: @location }
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, params: { id: @location }
     assert_response :success
   end
 
-  test "should update location" do
-    patch :update, params: { id: @location, location: { LocName: 'UpdateLocation'  } }
+  test 'should update location' do
+    patch :update, params: { id: @location, location: { LocName: 'UpdateLocation' } }
     assert_redirected_to location_path(assigns(:location))
   end
 
-  test "should destroy location" do
+  test 'should destroy location' do
     assert_difference('Location.count', -1) do
       delete :destroy, params: { id: @location }
     end

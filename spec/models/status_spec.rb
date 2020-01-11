@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Status, type: :model do
-  it "contains the standard values" do
+  it 'contains the standard values' do
     statuses = Status.all
     expect(statuses.count).to eq(4)
     expect(statuses[0].name).to eq('Open')

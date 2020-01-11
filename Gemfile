@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-ruby "2.4.3"
+ruby '2.6.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use SCSS for stylesheets
@@ -22,7 +24,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', group: :doc
 
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -32,20 +33,18 @@ gem 'sdoc', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # Added gems
-gem 'materialize-sass'
-gem 'oauth2'
-gem 'dotenv-rails'
-gem 'kaminari'
-gem 'paperclip'
-gem 'creek'
-gem 'faker'
-gem 'rspec-rails'
 gem 'capybara'
-gem 'selenium-webdriver', '~> 2.53'
-gem 'hirb'
+gem 'creek'
+gem 'dotenv-rails'
+gem 'faker'
 gem 'github-markup'
+gem 'hirb'
 gem 'jquery-turbolinks'
+gem 'kaminari'
+gem 'materialize-sass'
 gem 'mysql2'
+gem 'oauth2'
+gem 'paperclip'
 gem 'paranoia'
 
 # Use debugger
@@ -54,8 +53,8 @@ gem 'paranoia'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'simplecov'
   gem 'rails-controller-testing'
+  gem 'simplecov'
 end
 
 group :development do
@@ -67,7 +66,11 @@ group :development do
 end
 
 group :test do
-# Use sqlite3 as the database for Active Record
+  gem 'mutant-rspec'
+  gem 'rspec-rails'
+  gem 'rubocop-performance'
+  gem 'rubocop-rspec'
+  gem 'selenium-webdriver', '~> 2.53'
+  # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
-

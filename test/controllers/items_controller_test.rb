@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ItemsControllerTest < ActionController::TestCase
@@ -6,31 +8,31 @@ class ItemsControllerTest < ActionController::TestCase
   setup do
     @location = locations(:location_one)
     @item = items(:item_one)
-    #@item.location = @location
-    #@item.save
+    # @item.location = @location
+    # @item.save
   end
 
-  test "should get index" do
+  test 'should get index' do
     assert_not_equal(@item.LocId, 0)
     get :index
     assert_response :success
     assert_not_nil assigns(:items)
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should fail to create item" do
+  test 'should fail to create item' do
     assert_no_difference('Item.count') do
-      post :create, params: { item: { ItemName: '(open)'} }
+      post :create, params: { item: { ItemName: '(open)' } }
     end
 
     assert_response :success
   end
 
-  test "should create item" do
+  test 'should create item' do
     assert_difference('Item.count') do
       post :create, params: { item: { LocId: @location } }
     end
@@ -38,22 +40,22 @@ class ItemsControllerTest < ActionController::TestCase
     assert_redirected_to item_path(assigns(:item))
   end
 
-  test "should show item" do
+  test 'should show item' do
     get :show, params: { id: @item }
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, params: { id: @item }
     assert_response :success
   end
 
-  test "should update item" do
-    patch :update, params: { id: @item, item: { ItemName: 'changed name'  } }
+  test 'should update item' do
+    patch :update, params: { id: @item, item: { ItemName: 'changed name' } }
     assert_redirected_to item_path(assigns(:item))
   end
 
-  test "should destroy item" do
+  test 'should destroy item' do
     assert_difference('Item.count', -1) do
       delete :destroy, params: { id: @item }
     end
