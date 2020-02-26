@@ -81,7 +81,7 @@ GEM
       i18n (>= 0.7)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.23)
+    ffi (1.12.2)
     github-markup (2.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
